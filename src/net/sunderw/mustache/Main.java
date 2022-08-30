@@ -25,6 +25,10 @@ public class Main {
 
     public static int compressionSize;
 
+    private static final String COLOR_GREEN = "\u001B[32m";
+    private static final String COLOR_RED = "\u001B[31m";
+    private static final String COLOR_RESET = "\u001B[0m";
+
     public static void main(String[] args) {
 
         InputStream stream = ClassLoader.getSystemClassLoader().getResourceAsStream("resources/targets.txt");
@@ -51,7 +55,7 @@ public class Main {
         try {
             socket.connect(host, CONNECT_TIMEOUT);
         } catch (Exception e) {
-            System.out.println("\u001B[31mFailed connecting\u001B[0m");
+            System.out.println(COLOR_RED + "Failed connecting" + COLOR_RESET);
             return;
         }
 
@@ -73,7 +77,7 @@ public class Main {
         int id = PacketUtils.readVarInt(input);
 
         if (id == 1) {
-            System.out.println("\u001B[31mEncryption request for " + username + "\u001B[0m");
+            System.out.println(COLOR_RED + "Encryption request for " + username + COLOR_RESET);
             return;
         } else if (id == 0) {
             System.out.println("Kicked - Reason: " + PacketUtils.readString(input));
@@ -82,9 +86,9 @@ public class Main {
 
         compressionSize = PacketUtils.readVarInt(input);
 
-        // Set skin
+        // Set player skin
         PacketUtils.sendPacketCompressed(output, new C01PacketChat("/skin Sunderw_19k"));
-        System.out.println("\u001B[32mSkin set for " + username + "\u001B[0m");
+        System.out.println(COLOR_GREEN + "Skin set for " + username + COLOR_RESET);
 
         // Disconnect
         PacketUtils.sendPacketUncompressed(output, new C01PacketChat("invalid"));
