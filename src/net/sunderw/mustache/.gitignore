@@ -1,7 +1,0 @@
-### Java template
-.idea
-out/
-build/
-.gradle/
-rebel.xml
-
