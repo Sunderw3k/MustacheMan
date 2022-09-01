@@ -16,7 +16,7 @@ My good friend [Ciel](https://github.com/Ciel-MC) thought of the name "Mustache 
 
 ## Downfall
 The bug was pretty quickly fixed by the devs - it lasted for about 2 days  
-We changes the skins of around 5k players
+We changed the skins of around 5k players
 
 ## Images
 
